@@ -15,12 +15,8 @@ const Dashboard = ({ navigation }: Props) => (
     <Logo />
     <Header>Let’s start</Header>
     <Paragraph>
-      Your amazing app starts here. Open you favourite code editor and start
-      editing this project.
+      This is where we will put our calculator
     </Paragraph>
-    <Button mode="outlined" onPress={() => navigation.navigate('LoginScreen')}>
-      Logout
-    </Button>
   </Background>
 );
 

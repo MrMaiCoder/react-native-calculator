@@ -8,6 +8,7 @@ import {
   HomeScreen,
   LoginScreen,
   Dashboard,
+  RegisterScreen,
 } from './screens';
 
 if (!firebase.apps.length) {
@@ -17,11 +18,12 @@ if (!firebase.apps.length) {
 const Router = createStackNavigator(
   {
     LoginScreen,
+    HomeScreen,
     Dashboard,
     RegisterScreen,
   },
   {
-    initialRouteName: 'LoginScreen',
+    initialRouteName: 'HomeScreen',
     headerMode: 'none',
   }
 );
