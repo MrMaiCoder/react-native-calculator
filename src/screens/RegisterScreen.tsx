@@ -1,13 +1,15 @@
 import React, { memo, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Alert } from 'react-native';
 import Background from '../components/Background';
 import Logo from '../components/Logo';
 import Header from '../components/Header';
 import Button from '../components/Button';
 import TextInput from '../components/TextInput';
 import { theme } from '../core/theme';
-import { emailValidator, passwordValidator } from '../core/utils';
+import { confirmPasswordValidator, emailValidator, passwordValidator } from '../core/utils';
 import { Navigation } from '../types';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 
 type Props = {
   navigation: Navigation;
@@ -16,18 +18,25 @@ type Props = {
 const RegisterScreen = ({ navigation }: Props) => {
   const [email, setEmail] = useState({ value: '', error: '' });
   const [password, setPassword] = useState({ value: '', error: '' });
+  const [confirmPassword, setConfirmPassword] = useState({ value: '', error: '' });
 
-  const _onLoginPressed = () => {
+  const _onRegisterPressed = () => {
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
+    const confirmPasswordError = confirmPasswordValidator(password.value, confirmPassword.value);
 
-    if (emailError || passwordError) {
+    if (emailError || passwordError || confirmPasswordError) {
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
+      setConfirmPassword({ ...confirmPassword, error: confirmPasswordError});
       return;
     }
 
-    navigation.navigate('Dashboard');
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email.value, password.value)
+      .then(() => navigation.navigate('Dashboard'))
+      .catch((err) => Alert.alert(err.message));
   };
 
   return (
@@ -59,8 +68,18 @@ const RegisterScreen = ({ navigation }: Props) => {
         secureTextEntry
       />
 
-      <Button mode="contained" onPress={_onLoginPressed}>
-        Login
+      <TextInput
+        label="Confirm Password"
+        returnKeyType="done"
+        value={confirmPassword.value}
+        onChangeText={(text) => setConfirmPassword({ value: text, error: '' })}
+        error={!!confirmPassword.error}
+        errorText={confirmPassword.error}
+        secureTextEntry
+      />
+
+      <Button mode="contained" onPress={_onRegisterPressed}>
+        Register
       </Button>
     </Background>
   );

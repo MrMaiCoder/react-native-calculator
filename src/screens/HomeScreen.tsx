@@ -22,7 +22,7 @@ const HomeScreen = ({ navigation }: Props) => (
       mode="outlined"
       onPress={() => navigation.navigate('RegisterScreen')}
     >
-      Sign Up
+      Register
     </Button>
   </Background>
 );
