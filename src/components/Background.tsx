@@ -1,27 +1,31 @@
 import React, { memo } from 'react';
 import {
   StyleSheet,
-  KeyboardAvoidingView, View,
+  KeyboardAvoidingView, ImageBackground,
 } from 'react-native';
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 type Props = {
   children: React.ReactNode;
 };
 
 const Background = ({ children }: Props) => (
-  <View
+  <ImageBackground
+    source={require('../assets/bg.png')}
+    resizeMode="cover"
     style={styles.background}
   >
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       {children}
     </KeyboardAvoidingView>
-  </View>
+  </ImageBackground>
 );
 
 const styles = StyleSheet.create({
   background: {
     flex: 1,
     width: '100%',
+    top: getStatusBarHeight(),
   },
   container: {
     flex: 1,
