@@ -21,9 +21,7 @@ export default class App extends Component {
         result: ''
       })
     }
-
-
-    if (operation === '=') {
+    else if (operation === '=') {
       this.pressedEqual = true;
       this.setState({
         display: this.state.result === '' ? this.state.display : this.state.result,
