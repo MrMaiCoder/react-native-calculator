@@ -81,5 +81,6 @@ const styles = StyleSheet.create({
     // alignItems: 'stretch',
     backgroundColor: CalculatorColors.darker,
     width:'100%',
+    borderRadius: 40,
   },
 });

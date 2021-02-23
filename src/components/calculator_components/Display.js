@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, SafeAreaView, Text, StyleSheet } from 'react-native'
+import CalculatorColors from './CalculatorColors';
 
 const CalculatorDisplay = ({ state }) => (
   <View style={styles.container}>
@@ -22,10 +23,12 @@ const CalculatorDisplay = ({ state }) => (
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#1b2836',
+    backgroundColor: CalculatorColors['blue-lightest'],
     flex: 1,
     justifyContent: 'space-around',
     paddingHorizontal: 24,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
   },
   safe: {
     flex: 1,
@@ -34,12 +37,12 @@ const styles = StyleSheet.create({
   display: {
     textAlign: 'right',
     fontWeight: 'bold',
-    color: '#ffffff',
+    color: '#222',
     fontSize: 40,
   },
   result: {
     textAlign: 'right',
-    color: '#ffffff',
+    color: '#444',
     fontSize: 30,
   },
 })

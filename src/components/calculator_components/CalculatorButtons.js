@@ -50,11 +50,13 @@ const styles = StyleSheet.create({
   },
   numbers: {
     flex: 3,
-    backgroundColor: '#141d26',
+    backgroundColor: CalculatorColors['blue-darker'] ,
+    borderBottomLeftRadius: 30,
   },
   operations: {
     flex: 1,
-    backgroundColor: '#f6993f',
+    backgroundColor: CalculatorColors['blue'],
+    borderBottomRightRadius: 30,
   }
 })
 
