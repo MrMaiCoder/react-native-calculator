@@ -10,6 +10,7 @@ import { confirmPasswordValidator, emailValidator, passwordValidator } from '../
 import { Navigation } from '../types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import BackButton from '../components/BackButton';
 
 type Props = {
   navigation: Navigation;
@@ -41,9 +42,11 @@ const RegisterScreen = ({ navigation }: Props) => {
 
   return (
     <Background>
+      <BackButton goBack={() => navigation.navigate('HomeScreen')} />
+
       <Logo />
 
-      <Header>Welcome</Header>
+      <Header>Register</Header>
 
       <TextInput
         label="Email"

@@ -47,7 +47,7 @@ const LoginScreen = ({ navigation }: Props) => {
 
       <Logo />
 
-      <Header>Welcome</Header>
+      <Header>Login</Header>
 
       <TextInput
         label="Email"
@@ -75,7 +75,7 @@ const LoginScreen = ({ navigation }: Props) => {
       <Button mode="contained" onPress={_onLoginPressed}>
         Login
       </Button>
-      <Button mode="contained" onPress={_onRegisterPressed}>
+      <Button mode="outlined" onPress={_onRegisterPressed}>
         Register
       </Button>
     </Background>
