@@ -3,7 +3,7 @@ import Button from '../components/Button';
 import { Navigation } from '../types';
 import Background from '../components/Background';
 import { StyleSheet, Text, View, Alert, SafeAreaView } from 'react-native';
-import { Calculator } from 'react-native-calculator';
+import Calculator from '../components/calculator_components/Calculator'
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -22,9 +22,7 @@ const Dashboard = ({ navigation }: Props) => {
 
   return (
     <Background>
-      <SafeAreaView style={{ flex: 1, flexDirection: 'row' }}>
-        <Calculator style={{ flex: 1, flexDirection: 'row' }} />
-      </SafeAreaView>
+      <Calculator/>
       <Button mode="outlined" onPress={_onLogoutPressed}>
         Logout
       </Button>
